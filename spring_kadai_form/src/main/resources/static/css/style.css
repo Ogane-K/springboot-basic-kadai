@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+.formBlock {
+	display: flex;
+	align-items:center
+}
+
+
+
+
+.errorText {
+	color: red;
+}
+
+.formLabel {
+	text-align: left;
+	width: 150px;  
+
+}

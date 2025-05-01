@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>入力フォーム</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+	<!--タイトル部分-->
+	<h1>お問い合わせフォーム</h1>
+
+	<!--以下フォーム部分-->
+	<form th:action="@{/confirm}" method="post" th:object="${contactForm}">
+
+		<!--　ブロック内の各行は
+					入力欄のラベル
+					入力欄本体
+					<br>
+					エラーメッセージ
+		-->
+
+		<div class="formBlock">
+			<div class="formLabel">
+				<!--お名前ブロック-->
+				<label for="name">お名前</label>
+			</div>
+			<div class="inputArea">
+				<input type="text" th:field="*{name}">
+				<br>
+				<div class="errorText" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+			</div>
+		</div>
+
+		<div class="formBlock">
+			<div class="formLabel">
+				<!--Eメールブロック-->
+				<label for="email">メールアドレス</label>
+			</div>
+			<div class="inputArea">
+				<input type="text" th:field="*{email}">
+				<br>
+				<div class="errorText" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+			</div>
+		</div>
+
+		<div class="formBlock">
+			<div class="formLabel">
+				<!--お問い合わせ内容ブロック-->
+				<label for="message">お問い合わせ内容</label>
+			</div> 
+			<div class="inputArea">
+				<textarea th:field="*{message}" cols="30" rows="10"></textarea>
+				<br>
+				<div class="errorText" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></div>
+			</div>
+		</div>
+		<!--送信ボタン-->
+		<button type="submit">送信</button>
+	</form>
+
+</body>
+
+</html>
